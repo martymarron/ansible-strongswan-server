@@ -1,2 +1,9 @@
-- include: strongswan.yml tags=stongswan
+- include: setup-Debian.yml
+  when: "ansible_os_family == 'Debian'"
+  tags: strongswan
 
+- include: setup-RedHat.yml
+  when: "ansible_os_family == 'RedHat'"
+  tags: strongswan
+
+- include: strongswan.yml tags=stongswan

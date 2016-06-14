@@ -1,11 +1,3 @@
-- name: Installs strongswan & ikev2 daemon
-  apt: name={{ item }} state=present
-  with_items:
-    - strongswan
-    - strongswan-ike
-    - strongswan-ikev2
-  tags: apt
-
 - name: Creates config and secrets fragments directory
   file: path=/etc/{{ item }} state=directory mode=750 owner=root
   with_items:
@@ -25,8 +17,8 @@
 
 - name: Adds sysctl entry for ipforward
   sysctl: >
-    name="net.ipv4.ip_forward" 
-    value=1 
+    name="net.ipv4.ip_forward"
+    value=1
     sysctl_set=yes
     sysctl_file=/etc/sysctl.d/50_ipforward.conf
 
