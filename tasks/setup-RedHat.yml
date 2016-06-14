@@ -1,0 +1,11 @@
+- name: Installs epel repo
+  yum: >
+    name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm
+  tags: yum
+
+- name: Installs strongswan & xl2tpd daemon
+  yum: name={{ item }} enablerepo=epel state=present
+  with_items:
+    - strongswan
+    - xl2tpd
+  tags: yum

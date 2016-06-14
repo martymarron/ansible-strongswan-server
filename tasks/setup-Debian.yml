@@ -1,0 +1,7 @@
+- name: Installs strongswan & ikev2 daemon
+    apt: name={{ item }} state=present
+    with_items:
+      - strongswan
+      - strongswan-ike
+      - strongswan-ikev2
+    tags: apt
