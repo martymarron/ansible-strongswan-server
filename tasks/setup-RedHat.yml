@@ -4,8 +4,8 @@
   tags: yum
 
 - name: Installs strongswan & xl2tpd daemon
-  yum: name={{ item }} enablerepo=epel state=present
+  yum: name="{{ item }}" enablerepo=epel state=present
   with_items:
-    - strongswan
-    - xl2tpd
+    - "strongswan"
+    - "xl2tpd"
   tags: yum

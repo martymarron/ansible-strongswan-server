@@ -1,15 +1,15 @@
 - name: Creates config and secrets fragments directory
-  file: path=/etc/{{ item }} state=directory mode=750 owner=root
+  file: path="/etc/{{ item }}" state=directory mode=750 owner=root
   with_items:
-    - ipsec.conf.d
-    - ipsec.secrets.d
+    - "ipsec.conf.d"
+    - "ipsec.secrets.d"
 
 - name: Creates base config
-  template: src={{ item }}.j2 dest=/etc/{{ item }}
+  template: src="{{ item }}.j2" dest="/etc/{{ item }}"
   notify: Restart strongswan
   with_items:
-    - ipsec.conf
-    - ipsec.secrets
+    - "ipsec.conf"
+    - "ipsec.secrets"
 
 - name: Adds defaults
   template: src=00_defaults.conf.j2 dest=/etc/ipsec.conf.d/00_defaults.conf
